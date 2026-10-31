@@ -1,6 +1,6 @@
 {
 	"name": "schemas-pg",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "schemas for database",
 	"author": "forge & phored",
 	"type": "module",
