@@ -1,0 +1,21 @@
+{
+	"name": "schemas-pg",
+	"version": "0.1.0",
+	"description": "schemas for database",
+	"author": "forge & phored",
+	"type": "commonjs",
+	"files": [
+		"schemas",
+		"types"
+	],
+	"dependencies": {
+		"dotenv": "^18.0.9",
+		"drizzle-orm": "^1.0.0-rc.5",
+		"pg": "^8.23.1"
+	},
+	"devDependencies": {
+		"@types/pg": "^8.23.1",
+		"drizzle-kit": "^1.0.0-rc.5",
+		"tsx": "^4.23.15"
+	}
+}
