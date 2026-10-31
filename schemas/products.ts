@@ -7,7 +7,8 @@ import {
 	varchar,
 } from "drizzle-orm/pg-core";
 import { productTypes } from "./product_types";
-import { genTimestamp } from "./helpers/columns.helpers";
+import { genTimestamp } from "./helpers/columns.helpers.js";
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
 export const products = pgTable(
 	"products",
@@ -23,3 +24,6 @@ export const products = pgTable(
 	},
 	(t) => [index("products_idx").on(t.id)],
 );
+
+export type Product = InferSelectModel<typeof products>;
+export type NewProduct = InferInsertModel<typeof products>;

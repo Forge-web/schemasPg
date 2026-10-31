@@ -1,5 +1,6 @@
 import { index, pgTable, text, varchar } from "drizzle-orm/pg-core";
-import { genId, genTimestamp } from "./helpers/columns.helpers";
+import { genId, genTimestamp } from "./helpers/columns.helpers.js";
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
 export const users = pgTable(
 	"users",
@@ -15,3 +16,6 @@ export const users = pgTable(
 		index("users_username").on(t.username),
 	],
 );
+
+export type User = InferSelectModel<typeof users>;
+export type NewUser = InferInsertModel<typeof users>;

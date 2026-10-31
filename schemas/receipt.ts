@@ -5,10 +5,11 @@ import {
 	pgTable,
 	uuid,
 } from "drizzle-orm/pg-core";
-import { genId, genTimestamp } from "./helpers/columns.helpers";
+import { genId, genTimestamp } from "./helpers/columns.helpers.js";
 import { users } from "./users";
 import { organizations } from "./organizations";
 import { paymentTypes } from "./payment_types";
+import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
 export const receipts = pgTable(
 	"receipts",
@@ -35,3 +36,6 @@ export const receipts = pgTable(
 		index("receipts_organizations_idx").on(t.organizations_id),
 	],
 );
+
+export type Receipts = InferSelectModel<typeof receipts>;
+export type NewReceipt = InferInsertModel<typeof receipts>;

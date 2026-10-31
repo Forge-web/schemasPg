@@ -6,10 +6,15 @@ import {
 	uuid,
 	varchar,
 } from "drizzle-orm/pg-core";
-import { genId, genTimestamp } from "./helpers/columns.helpers";
+import { genId, genTimestamp } from "./helpers/columns.helpers.js";
 import { productItems } from "./product_items";
 import { receipts } from "./receipt";
-import { sql, SQL } from "drizzle-orm";
+import {
+	sql,
+	SQL,
+	type InferInsertModel,
+	type InferSelectModel,
+} from "drizzle-orm";
 import { products } from "./products";
 
 export const receipt_positions = pgTable(
@@ -51,3 +56,10 @@ export const receipt_positions = pgTable(
 		index("receipt_positions_idx").on(t.id),
 	],
 );
+
+export type ReceiptPosition = InferSelectModel<
+	typeof receipt_positions
+>;
+export type NewReceiptPosition = InferInsertModel<
+	typeof receipt_positions
+>;

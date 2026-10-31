@@ -6,10 +6,15 @@ import {
 	pgTable,
 	uuid,
 } from "drizzle-orm/pg-core";
-import { genId, genTimestamp } from "./helpers/columns.helpers";
+import { genId, genTimestamp } from "./helpers/columns.helpers.js";
 import { products } from "./products";
 import { invoice } from "./invoice";
-import { SQL, sql } from "drizzle-orm";
+import {
+	SQL,
+	sql,
+	type InferInsertModel,
+	type InferSelectModel,
+} from "drizzle-orm";
 
 export const productItems = pgTable(
 	"product_items",
@@ -41,3 +46,6 @@ export const productItems = pgTable(
 		index("product_items_idx").on(t.id),
 	],
 );
+
+export type ProductItem = InferSelectModel<typeof productItems>;
+export type NewProductItem = InferInsertModel<typeof productItems>;
