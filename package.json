@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "schemas for database",
 	"author": "forge & phored",
-	"type": "commonjs",
+	"type": "module",
 	"files": [
 		"schemas",
 		"types"
