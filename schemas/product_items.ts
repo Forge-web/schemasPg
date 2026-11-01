@@ -15,7 +15,7 @@ import {
 	type InferSelectModel,
 } from "drizzle-orm";
 
-export const productItems = pgTable(
+export const product_items = pgTable(
 	"product_items",
 	{
 		...genId,
@@ -35,7 +35,7 @@ export const productItems = pgTable(
 			scale: 2,
 		}).generatedAlwaysAs(
 			(): SQL =>
-				sql`${productItems.quantity} * ${productItems.price}`,
+				sql`${product_items.quantity} * ${product_items.price}`,
 		),
 		...genTimestamp,
 	},
@@ -46,5 +46,5 @@ export const productItems = pgTable(
 	],
 );
 
-export type ProductItem = InferSelectModel<typeof productItems>;
-export type NewProductItem = InferInsertModel<typeof productItems>;
+export type ProductItem = InferSelectModel<typeof product_items>;
+export type NewProductItem = InferInsertModel<typeof product_items>;

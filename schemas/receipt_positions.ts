@@ -7,7 +7,7 @@ import {
 	varchar,
 } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
-import { productItems } from "./product_items.js";
+import { product_items } from "./product_items.js";
 import { receipts } from "./receipt.js";
 import {
 	sql,
@@ -22,7 +22,7 @@ export const receipt_positions = pgTable(
 	{
 		...genId,
 		product_items_id: uuid("product_items_id").references(
-			() => productItems.id,
+			() => product_items.id,
 			{ onDelete: "set null" },
 		),
 		product_id: bigint("product_id", { mode: "bigint" }).references(

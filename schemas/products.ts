@@ -6,7 +6,7 @@ import {
 	pgTable,
 	varchar,
 } from "drizzle-orm/pg-core";
-import { productTypes } from "./product_types.js";
+import { product_types } from "./product_types.js";
 import { genTimestamp } from "./helpers/columns.helpers.js";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
@@ -16,7 +16,7 @@ export const products = pgTable(
 		id: bigserial("id", { mode: "bigint" }).primaryKey(),
 		name: varchar("name", { length: 255 }).notNull(),
 		product_type: integer("product_type").references(
-			() => productTypes.id,
+			() => product_types.id,
 			{ onDelete: "cascade" },
 		),
 		price: decimal("price", { precision: 10, scale: 2 }).notNull(),

@@ -8,7 +8,7 @@ import {
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
 import { users } from "./users.js";
 import { organizations } from "./organizations.js";
-import { paymentTypes } from "./payment_types.js";
+import { payment_types } from "./payment_types.js";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
 export const receipts = pgTable(
@@ -23,7 +23,7 @@ export const receipts = pgTable(
 			{ onDelete: "set null" },
 		),
 		payment_types: integer("payment_types")
-			.references(() => paymentTypes.id)
+			.references(() => payment_types.id)
 			.notNull(),
 		check_sum: numeric("check_sum", {
 			precision: 10,
