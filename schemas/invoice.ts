@@ -2,7 +2,7 @@ import { pgEnum, pgTable, numeric } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
-const invoiceTypeEnum = pgEnum("type", [
+export const invoiceTypeEnum = pgEnum("invoice_type", [
 	"Поставка",
 	"Продажа",
 	"Возврат",
@@ -10,9 +10,7 @@ const invoiceTypeEnum = pgEnum("type", [
 
 export const invoice = pgTable("invoice", {
 	...genId,
-	invoice_type: invoiceTypeEnum("invoice_type")
-		.default("Поставка")
-		.notNull(),
+	invoice_type: invoiceTypeEnum(),
 	invoice_sum: numeric({ precision: 10, scale: 2 }),
 	...genTimestamp,
 });

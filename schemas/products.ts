@@ -6,7 +6,7 @@ import {
 	pgTable,
 	varchar,
 } from "drizzle-orm/pg-core";
-import { productTypes } from "./product_types";
+import { productTypes } from "./product_types.js";
 import { genTimestamp } from "./helpers/columns.helpers.js";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 

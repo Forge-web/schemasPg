@@ -7,15 +7,15 @@ import {
 	varchar,
 } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
-import { productItems } from "./product_items";
-import { receipts } from "./receipt";
+import { productItems } from "./product_items.js";
+import { receipts } from "./receipt.js";
 import {
 	sql,
 	SQL,
 	type InferInsertModel,
 	type InferSelectModel,
 } from "drizzle-orm";
-import { products } from "./products";
+import { products } from "./products.js";
 
 export const receipt_positions = pgTable(
 	"receipt_positions",

@@ -6,9 +6,9 @@ import {
 	uuid,
 } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
-import { users } from "./users";
-import { organizations } from "./organizations";
-import { paymentTypes } from "./payment_types";
+import { users } from "./users.js";
+import { organizations } from "./organizations.js";
+import { paymentTypes } from "./payment_types.js";
 import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 
 export const receipts = pgTable(

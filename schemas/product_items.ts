@@ -1,14 +1,13 @@
 import {
 	bigint,
 	index,
-	integer,
 	numeric,
 	pgTable,
 	uuid,
 } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
-import { products } from "./products";
-import { invoice } from "./invoice";
+import { products } from "./products.js";
+import { invoice } from "./invoice.js";
 import {
 	SQL,
 	sql,
