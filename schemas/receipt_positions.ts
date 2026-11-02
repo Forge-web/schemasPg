@@ -8,7 +8,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
 import { product_items } from "./product_items.js";
-import { receipts } from "./receipt.js";
+import { receipts } from "./receipts.js";
 import {
 	sql,
 	SQL,
@@ -29,7 +29,7 @@ export const receipt_positions = pgTable(
 			() => products.id,
 			{ onDelete: "set null" },
 		),
-		receipt_id: uuid("receipt_id")
+		receipts_id: uuid("receipts_id")
 			.references(() => receipts.id, { onDelete: "restrict" })
 			.notNull(),
 		name: varchar("name", { length: 255 }).notNull(),
@@ -51,7 +51,7 @@ export const receipt_positions = pgTable(
 		...genTimestamp,
 	},
 	(t) => [
-		index("receipt_positions_receipt_idx").on(t.receipt_id),
+		index("receipt_positions_receipt_idx").on(t.receipts_id),
 		index("receipt_positions_product_idx").on(t.product_id),
 		index("receipt_positions_idx").on(t.id),
 	],
