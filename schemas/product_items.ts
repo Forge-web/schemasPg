@@ -19,7 +19,7 @@ export const product_items = pgTable(
 	"product_items",
 	{
 		...genId,
-		product_id: bigint("product_id", { mode: "number" })
+		products_id: bigint("products_id", { mode: "number" })
 			.references(() => products.id, { onDelete: "restrict" })
 			.notNull(),
 		invoice_id: uuid("invoice_id")
@@ -40,7 +40,7 @@ export const product_items = pgTable(
 		...genTimestamp,
 	},
 	(t) => [
-		index("product_items_product_idx").on(t.product_id),
+		index("product_items_product_idx").on(t.products_id),
 		index("product_items_invoice_idx").on(t.invoice_id),
 		index("product_items_idx").on(t.id),
 	],

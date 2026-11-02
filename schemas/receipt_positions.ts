@@ -25,7 +25,7 @@ export const receipt_positions = pgTable(
 			() => product_items.id,
 			{ onDelete: "set null" },
 		),
-		product_id: bigint("product_id", { mode: "number" }).references(
+		products_id: bigint("products_id", { mode: "number" }).references(
 			() => products.id,
 			{ onDelete: "set null" },
 		),
@@ -52,7 +52,7 @@ export const receipt_positions = pgTable(
 	},
 	(t) => [
 		index("receipt_positions_receipt_idx").on(t.receipts_id),
-		index("receipt_positions_product_idx").on(t.product_id),
+		index("receipt_positions_product_idx").on(t.products_id),
 		index("receipt_positions_idx").on(t.id),
 	],
 );
