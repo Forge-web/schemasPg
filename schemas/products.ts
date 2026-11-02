@@ -15,7 +15,7 @@ export const products = pgTable(
 	{
 		id: bigserial("id", { mode: "number" }).primaryKey(),
 		name: varchar("name", { length: 255 }).notNull(),
-		product_type: integer("product_type").references(
+		product_type_id: integer("product_type_id").references(
 			() => product_types.id,
 			{ onDelete: "cascade" },
 		),

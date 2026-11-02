@@ -22,7 +22,7 @@ export const receipts = pgTable(
 			() => organizations.id,
 			{ onDelete: "set null" },
 		),
-		payment_types: integer("payment_types")
+		payment_types_id: integer("payment_types_id")
 			.references(() => payment_types.id)
 			.notNull(),
 		check_sum: numeric("check_sum", {
