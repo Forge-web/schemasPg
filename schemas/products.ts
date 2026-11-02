@@ -13,7 +13,7 @@ import type { InferInsertModel, InferSelectModel } from "drizzle-orm";
 export const products = pgTable(
 	"products",
 	{
-		id: bigserial("id", { mode: "bigint" }).primaryKey(),
+		id: bigserial("id", { mode: "number" }).primaryKey(),
 		name: varchar("name", { length: 255 }).notNull(),
 		product_type: integer("product_type").references(
 			() => product_types.id,

@@ -25,7 +25,7 @@ export const receipt_positions = pgTable(
 			() => product_items.id,
 			{ onDelete: "set null" },
 		),
-		product_id: bigint("product_id", { mode: "bigint" }).references(
+		product_id: bigint("product_id", { mode: "number" }).references(
 			() => products.id,
 			{ onDelete: "set null" },
 		),

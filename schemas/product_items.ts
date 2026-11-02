@@ -19,7 +19,7 @@ export const product_items = pgTable(
 	"product_items",
 	{
 		...genId,
-		product_id: bigint("product_id", { mode: "bigint" })
+		product_id: bigint("product_id", { mode: "number" })
 			.references(() => products.id, { onDelete: "restrict" })
 			.notNull(),
 		invoice_id: uuid("invoice_id")
