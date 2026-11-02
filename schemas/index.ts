@@ -5,5 +5,5 @@ export * from "./payment_types.js";
 export * from "./product_types.js";
 export * from "./product_items.js";
 export * from "./products.js";
-export * from "./receipt.js";
+export * from "./receipts.js";
 export * from "./users.js";
