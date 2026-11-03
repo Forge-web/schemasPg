@@ -25,10 +25,6 @@ export const receipts = pgTable(
 		payment_types_id: integer("payment_types_id")
 			.references(() => payment_types.id)
 			.notNull(),
-		check_sum: numeric("check_sum", {
-			precision: 10,
-			scale: 2,
-		}).notNull(),
 		...genTimestamp,
 	},
 	(t) => [
