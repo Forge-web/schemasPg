@@ -21,7 +21,7 @@ export const products = pgTable(
 	{
 		...genId,
 		name: varchar("name", { length: 255 }).notNull(),
-		product_type: integer("product_types_id").references(
+		product_type_id: integer("product_types_id").references(
 			() => product_types.id,
 			{ onDelete: "cascade" },
 		),
