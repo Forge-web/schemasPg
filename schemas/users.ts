@@ -8,7 +8,8 @@ export const users = pgTable(
 		...genId,
 		username: varchar("username", { length: 50 }).notNull().unique(),
 		email: varchar("email", { length: 120 }).notNull().unique(),
-		password_hash: text("password_hash").notNull(),
+		name: varchar("name", { length: 20 }),
+		lastname: varchar("lastname", { length: 30 }),
 		...genTimestamp,
 	},
 	(t) => [

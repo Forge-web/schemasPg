@@ -1,38 +1,30 @@
 import {
-	bigint,
 	index,
+	integer,
 	numeric,
 	pgTable,
 	uuid,
 	varchar,
 } from "drizzle-orm/pg-core";
 import { genId, genTimestamp } from "./helpers/columns.helpers.js";
-import { product_items } from "./product_items.js";
-import { receipts } from "./receipts.js";
 import {
 	sql,
 	SQL,
 	type InferInsertModel,
 	type InferSelectModel,
 } from "drizzle-orm";
-import { products } from "./products.js";
 
-export const receipt_positions = pgTable(
-	"receipt_positions",
+import { product_types } from "./product_types.js";
+
+export const products = pgTable(
+	"products",
 	{
 		...genId,
-		product_items_id: uuid("product_items_id").references(
-			() => product_items.id,
-			{ onDelete: "set null" },
-		),
-		products_id: bigint("products_id", { mode: "number" }).references(
-			() => products.id,
-			{ onDelete: "set null" },
-		),
-		receipts_id: uuid("receipts_id")
-			.references(() => receipts.id, { onDelete: "restrict" })
-			.notNull(),
 		name: varchar("name", { length: 255 }).notNull(),
+		product_type: integer("product_types_id").references(
+			() => product_types.id,
+			{ onDelete: "cascade" },
+		),
 		quantity: numeric("quantity", {
 			precision: 10,
 			scale: 2,
@@ -45,21 +37,12 @@ export const receipt_positions = pgTable(
 			precision: 10,
 			scale: 2,
 		}).generatedAlwaysAs(
-			(): SQL =>
-				sql`${receipt_positions.price} * ${receipt_positions.quantity} `,
+			(): SQL => sql`${products.price} * ${products.quantity} `,
 		),
 		...genTimestamp,
 	},
-	(t) => [
-		index("receipt_positions_receipt_idx").on(t.receipts_id),
-		index("receipt_positions_product_idx").on(t.products_id),
-		index("receipt_positions_idx").on(t.id),
-	],
+	(t) => [index("products_idx").on(t.id)],
 );
 
-export type ReceiptPosition = InferSelectModel<
-	typeof receipt_positions
->;
-export type NewReceiptPosition = InferInsertModel<
-	typeof receipt_positions
->;
+export type Product = InferSelectModel<typeof products>;
+export type NewProduct = InferInsertModel<typeof products>;

@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, timestamp } from "drizzle-orm/pg-core";
+import { timestamp, serial } from "drizzle-orm/pg-core";
 
 export const genTimestamp = {
 	update_at: timestamp(),
@@ -6,5 +6,5 @@ export const genTimestamp = {
 };
 
 export const genId = {
-	id: uuid("id").defaultRandom().primaryKey(),
+	id: serial("id").primaryKey(),
 };
