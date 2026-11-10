@@ -10,7 +10,7 @@ export const invoice_type_enum = pgEnum("invoice_type", [
 
 export const invoice = pgTable("invoice", {
 	...genId,
-	invoice_type: invoice_type_enum(),
+	invoice_type: invoice_type_enum().default("Поставка"),
 	invoice_sum: numeric({ precision: 10, scale: 2 }),
 	...genTimestamp,
 });
